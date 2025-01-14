@@ -1,26 +1,42 @@
-import sys  # Importing sys to handle command-line arguments
+#!/usr/bin/python3
+import sys
 
 def factorial(n):
     """
     Calculates the factorial of a given non-negative integer using recursion.
 
     Function Description:
-    This function computes the factorial of a non-negative integer `n`. 
-    The factorial of a number is defined as the product of all positive integers 
-    less than or equal to that number. By definition, the factorial of 0 is 1.
+    The factorial of a number `n` is the product of all positive integers 
+    less than or equal to `n`. By definition, the factorial of 0 is 1. 
+    This function uses recursion to compute the factorial, where the factorial
+    of `n` is calculated as `n * factorial(n-1)`.
 
     Parameters:
-    n (int): A non-negative integer for which the factorial is to be calculated.
+    n (int): A non-negative integer whose factorial is to be calculated.
 
     Returns:
-    int: The factorial of the input number `n`.
+    int: The factorial of the input number `n`. For `n = 0`, the function returns 1.
     """
-    if n == 0:  # Base case: the factorial of 0 is 1
+    if n == 0:  # Base case: factorial of 0 is 1
         return 1
-    else:  # Recursive case: n * factorial of (n-1)
+    else:  # Recursive case: n * factorial(n-1)
         return n * factorial(n-1)
 
 # Main program execution
-# Reads an integer from command-line arguments, calculates its factorial, and prints the result
-f = factorial(int(sys.argv[1]))  # Convert the first argument to an integer and calculate factorial
-print(f)  # Print the result of the factorial
+if __name__ == "__main__":
+    # Check if an argument is provided
+    if len(sys.argv) < 2:
+        print("Usage: ./factorial_recursive.py <number>")
+    else:
+        try:
+            # Convert the first command-line argument to an integer
+            num = int(sys.argv[1])
+            if num < 0:
+                print("Error: Factorial is not defined for negative numbers.")
+            else:
+                # Calculate and print the factorial
+                f = factorial(num)
+                print(f)
+        except ValueError:
+            print("Error: Please provide a valid integer.")
+

@@ -1,29 +1,33 @@
 #!/usr/bin/python3
-import sys  # Usamos esta biblioteca para leer lo que el usuario escribe
+import sys
 
-# Esta función calcula el factorial
 def factorial(n):
-    result = 1  # Empezamos con 1 porque multiplicar por 1 no cambia nada
-    while n > 1:  # Mientras n sea mayor que 1
-        result *= n  # Multiplicamos result por n
-        n -= 1  # Reducimos n en 1
-    return result  # Devolvemos el resultado final
+    """
+    Calculates the factorial of a given non-negative integer.
 
-# Ahora verificamos si el usuario dio un número como argumento
-if len(sys.argv) > 1:  # sys.argv contiene lo que el usuario escribe después del comando
-    try:
-        # Convertimos lo que el usuario escribió en un número entero
-        num = int(sys.argv[1])
-        
-        if num < 0:  # Si el número es negativo, mostramos un mensaje de error
-            print("Error: El número debe ser mayor o igual a 0.")
-        else:
-            # Calculamos el factorial
-            f = factorial(num)
-            print(f"El factorial de {num} es: {f}")
-    except ValueError:  # Si el usuario no escribió un número
-        print("Error: Por favor, ingresa un número entero.")
+    Parameters:
+    n (int): A non-negative integer whose factorial is to be calculated.
+
+    Returns:
+    int: The factorial of the input number `n`.
+    """
+    result = 1
+    while n > 1:
+        result *= n  # Multiply result by n
+        n -= 1       # Decrement n by 1
+    return result
+
+# Main program execution
+if len(sys.argv) < 2:
+    print("Usage: ./factorial.py <number>")
 else:
-    # Si el usuario no escribe nada, mostramos cómo usar el programa
-    print("Uso: ./factorial.py <número>")
-list
+    try:
+        # Convert input argument to an integer
+        num = int(sys.argv[1])
+        if num < 0:
+            print("Error: Factorial is not defined for negative numbers.")
+        else:
+            f = factorial(num)
+            print(f)
+    except ValueError:
+        print("Error: Please provide a valid integer.")

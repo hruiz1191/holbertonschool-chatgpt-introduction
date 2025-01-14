@@ -1,20 +1,20 @@
 class Checkbook:
     """
-    A simple checkbook class to manage deposits, withdrawals, and balance checks.
+    A simple checkbook class for managing deposits, withdrawals, and balance checks.
     """
 
     def __init__(self):
         """
-        Initializes the Checkbook with a balance of 0.0.
+        Initializes the Checkbook with a balance of $0.00.
         """
         self.balance = 0.0
 
     def deposit(self, amount):
         """
-        Deposits a specified amount into the checkbook.
+        Adds the specified amount to the current balance.
 
         Parameters:
-        amount (float): The amount to deposit.
+        amount (float): The amount to deposit. Must be greater than zero.
 
         Returns:
         None
@@ -28,10 +28,10 @@ class Checkbook:
 
     def withdraw(self, amount):
         """
-        Withdraws a specified amount from the checkbook.
+        Subtracts the specified amount from the current balance if sufficient funds exist.
 
         Parameters:
-        amount (float): The amount to withdraw.
+        amount (float): The amount to withdraw. Must be greater than zero and not exceed the current balance.
 
         Returns:
         None
@@ -47,7 +47,7 @@ class Checkbook:
 
     def get_balance(self):
         """
-        Prints the current balance in the checkbook.
+        Prints the current balance.
 
         Returns:
         None
@@ -57,8 +57,7 @@ class Checkbook:
 
 def main():
     """
-    Main function to interact with the Checkbook class. Provides options for depositing,
-    withdrawing, checking the balance, and exiting the program.
+    Main function to interact with the Checkbook. Provides options to deposit, withdraw, check balance, or exit.
 
     Returns:
     None
@@ -68,7 +67,7 @@ def main():
         action = input("What would you like to do? (deposit, withdraw, balance, exit): ").strip().lower()
 
         if action == 'exit':
-            print("Thank you for using the checkbook. Goodbye!")
+            print("Thank you for using the Checkbook. Goodbye!")
             break
         elif action == 'deposit':
             try:
@@ -90,4 +89,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
